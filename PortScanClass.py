@@ -24,7 +24,7 @@ class PortScanClass(object):
             elif resp.haslayer("TCP"):
                 if resp["TCP"].flags=="SA":  # 0x12
                     send_rst = sr(IP(dst=self.host)/TCP(dport=dport,flags="AR"),timeout=10)
-                    print("[+] %s %d \033[92m Closed \033[0m" % (self.host,dport))
+                    print("[+] %s %d \033[92m open \033[0m" % (self.host,dport))
                 elif resp["TCP"].flags=="RA":  # 0x14
                     print("[+] %s %d \033[91m Closed \033[0m" % (self.host,dport))
 
