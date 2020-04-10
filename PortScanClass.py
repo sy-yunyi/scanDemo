@@ -29,6 +29,6 @@ class PortScanClass(object):
 
 
 if __name__ == "__main__":
-    task = PortScanClass("39.97.232.156",[9000,443,8000])
+    task = PortScanClass("39.97.232.156",[80,443,8000])
     task.TCPConnect()
 
