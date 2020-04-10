@@ -18,12 +18,11 @@ class PortScanClass(object):
         print("start scan host %s" % self.host)
         for dport in self.port:
             resp = sr1(IP(dst=self.host)/TCP(sport=src_port,dport=dport,flags="S"),timeout=10,verbose=0)
-            pdb.set_trace()
             if (resp is None):
                 print("[+] %s %d \033[91m Closed \033[0m" % (self.host,dport))
             elif resp.haslayer("TCP"):
                 if resp["TCP"].flags=="SA":  # 0x12
-                    send_rst = sr(IP(dst=self.host)/TCP(dport=dport,flags="AR"),timeout=10)
+                    send_rst = sr(IP(dst=self.host)/TCP(dport=dport,flags="AR"),timeout=10,,verbose=0)
                     print("[+] %s %d \033[92m open \033[0m" % (self.host,dport))
                 elif resp["TCP"].flags=="RA":  # 0x14
                     print("[+] %s %d \033[91m Closed \033[0m" % (self.host,dport))
