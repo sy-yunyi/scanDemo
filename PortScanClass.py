@@ -17,7 +17,7 @@ class PortScanClass(object):
         src_port = RandShort() 
         print("start scan host %s" % self.host)
         for dport in self.port:
-            resp = sr1(IP(dst=self.host)/TCP(sport=src_port,dport=dport,flags="S"),timeout=10)
+            resp = sr1(IP(dst=self.host)/TCP(sport=src_port,dport=dport,flags="S"),timeout=10,verbose=0)
             pdb.set_trace()
             if (resp is None):
                 print("[+] %s %d \033[91m Closed \033[0m" % (self.host,dport))
